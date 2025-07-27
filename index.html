@@ -5,80 +5,405 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>订婚邀请函 - 韦龙怡 ❤️ 张小芳</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      font-family: "微软雅黑", sans-serif;
-      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
-      color: #333;
-      text-align: center;
-      overflow-x: hidden;
+      box-sizing: border-box;
     }
 
-    .container {
-      padding: 40px 20px;
-      max-width: 700px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      margin-top: 80px;
+    body {
+      font-family: "微软雅黑", "Helvetica Neue", sans-serif;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0, #fff0f5);
+      color: #5a1e1e;
+      text-align: center;
+      overflow-x: hidden;
+      min-height: 100vh;
       position: relative;
-      z-index: 2;
+    }
+
+    /* 星空背景 */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* 装饰元素 */
+    .decoration {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .heart-balloon {
+      width: 50px;
+      height: 70px;
+      background: radial-gradient(circle at 30% 30%, #ff6b8b, #ff3d67);
+      position: absolute;
+      border-radius: 50%;
+      transform: rotate(45deg);
+      animation: float 15s infinite ease-in-out;
+      box-shadow: 0 0 15px rgba(255, 61, 103, 0.5);
+    }
+
+    .heart-balloon:before, .heart-balloon:after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ff6b8b, #ff3d67);
+    }
+
+    .heart-balloon:before {
+      top: -25px;
+      left: 0;
+    }
+
+    .heart-balloon:after {
+      top: 0;
+      left: -25px;
+    }
+
+    .ribbon {
+      position: absolute;
+      width: 200px;
+      height: 40px;
+      background: linear-gradient(45deg, #e53935, #e35d5b);
+      transform: rotate(-30deg);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .ribbon:before, .ribbon:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .ribbon:before {
+      top: 0;
+      right: -20px;
+      border-width: 20px 0 20px 20px;
+      border-color: transparent transparent transparent #e53935;
+    }
+
+    .ribbon:after {
+      bottom: 0;
+      left: -20px;
+      border-width: 20px 20px 20px 0;
+      border-color: transparent #e53935 transparent transparent;
+    }
+
+    /* 主容器 */
+    .container {
+      padding: 60px 30px;
+      max-width: 750px;
+      margin: 120px auto 80px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 240, 245, 0.95));
+      border-radius: 25px;
+      box-shadow: 0 15px 50px rgba(199, 21, 133, 0.3), 0 0 100px rgba(255, 215, 0, 0.2) inset;
+      position: relative;
+      z-index: 10;
+      border: 3px solid #ffd700;
+      overflow: hidden;
+    }
+
+    .container:before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(45deg, #ffd700, #ff6b8b, #ffd700, #ff6b8b);
+      z-index: -1;
+      border-radius: 30px;
+      animation: border-glow 3s infinite alternate;
+    }
+
+    @keyframes border-glow {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.7; }
     }
 
     h1 {
-      font-size: 2.8em;
+      font-size: 3.5rem;
       color: #c71585;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      text-shadow: 0 3px 6px rgba(199, 21, 133, 0.3);
+      letter-spacing: 3px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    h1:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 3px;
+      background: linear-gradient(to right, transparent, #ffd700, transparent);
     }
 
     .names {
-      font-size: 2.2em;
-      margin: 20px 0;
+      font-size: 2.8rem;
+      margin: 30px 0;
       color: #dc143c;
       font-weight: bold;
+      text-shadow: 0 2px 4px rgba(220, 20, 60, 0.3);
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    .names:before, .names:after {
+      content: '✧';
+      color: #ffd700;
+      margin: 0 15px;
+      font-size: 2rem;
+      animation: spin 4s infinite linear;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .heart-pulse {
+      color: #ff6b8b;
+      font-size: 2.5rem;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
 
     .details {
-      font-size: 1.2em;
+      font-size: 1.3rem;
       line-height: 1.8;
-      margin: 30px 0;
+      margin: 40px 0;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .detail-item {
+      margin: 20px 0;
+      padding: 15px;
+      background: rgba(255, 240, 245, 0.7);
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      position: relative;
+      border-left: 4px solid #ff6b8b;
+    }
+
+    .detail-item:before {
+      content: '❀';
+      position: absolute;
+      left: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff6b8b;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* 照片展示 */
+    .photos {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .photo-frame {
+      width: 180px;
+      height: 180px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transform: rotate(-3deg);
+      transition: all 0.4s ease;
+    }
+
+    .photo-frame:nth-child(even) {
+      transform: rotate(3deg);
+    }
+
+    .photo-frame:hover {
+      transform: rotate(0) scale(1.05);
+      z-index: 5;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #ffafbd, #ffc3a0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 3rem;
+    }
+
+    /* 爱情誓言卡片 */
+    .love-card {
+      perspective: 1000px;
+      width: 300px;
+      height: 200px;
+      margin: 40px auto;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .love-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .card-front {
+      background: linear-gradient(135deg, #ff6b8b, #ff8e53);
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .card-front i {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .card-back {
+      background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+      color: #5a1e1e;
+      transform: rotateY(180deg);
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
     .footer {
-      font-size: 1em;
-      margin-top: 40px;
-      color: #999;
+      font-size: 1.1rem;
+      margin-top: 50px;
+      color: #8b4513;
+      padding: 15px;
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .footer:before {
+      content: "❦";
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ff6b8b;
+    }
+
+    .footer:after {
+      content: "❦";
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ff6b8b;
     }
 
     .music-note {
-      font-size: 2em;
+      font-size: 2.5rem;
       color: #c71585;
-      animation: float 2s ease-in-out infinite;
+      animation: float 3s ease-in-out infinite;
+      margin-bottom: 20px;
+      display: inline-block;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
     }
 
     /* 飘落花瓣效果 */
     .petal {
       position: fixed;
       top: -50px;
-      width: 20px;
-      height: 20px;
-      background: url('https://cdn.jsdelivr.net/gh/jasonkayzk/static-resources/petal.png') no-repeat center center;
+      width: 25px;
+      height: 25px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ff6b8b" d="M50,15 C60,5 80,5 85,15 C95,25 95,40 85,50 C75,60 60,60 50,50 C40,60 25,60 15,50 C5,40 5,25 15,15 C20,5 40,5 50,15 Z"/></svg>') no-repeat center center;
       background-size: contain;
       opacity: 0.8;
       animation: fall linear infinite;
-      z-index: 1;
+      z-index: 2;
     }
 
     @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(100vh) rotate(360deg); }
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(100vh) translateX(50px) rotate(360deg); opacity: 0; }
+    }
+
+    /* 闪光粒子 */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: #ffd700;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 5;
+      animation: sparkle-fade 1.5s forwards;
+    }
+
+    @keyframes sparkle-fade {
+      0% { opacity: 1; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0); }
     }
 
     /* 音乐提示框 */
@@ -87,37 +412,146 @@
       top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(255,255,255,0.95);
-      padding: 20px 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #ccc;
-      font-size: 1.2em;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(199, 21, 133, 0.3);
+      font-size: 1.3rem;
       z-index: 1000;
+      border: 2px solid #ffd700;
+      color: #c71585;
+      backdrop-filter: blur(5px);
+      animation: pulse-tip 2s infinite;
+    }
+
+    #unmute-tip:before {
+      content: '♪';
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 15px;
+      color: #ff6b8b;
+    }
+
+    @keyframes pulse-tip {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.05); }
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .container {
+        margin: 80px 20px;
+        padding: 40px 15px;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .names {
+        font-size: 2rem;
+      }
+      
+      .details {
+        font-size: 1.1rem;
+      }
+      
+      .photos {
+        gap: 15px;
+      }
+      
+      .photo-frame {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .love-card {
+        width: 260px;
+        height: 180px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- 星空背景 -->
+  <div class="stars"></div>
+  
+  <!-- 装饰飘带 -->
+  <div class="ribbon" style="top: 50px; left: -50px;"></div>
+  <div class="ribbon" style="bottom: 100px; right: -50px; transform: rotate(30deg);"></div>
+  
+  <!-- 爱心气球 -->
+  <div class="heart-balloon" style="top: 15%; left: 10%; animation-delay: 0s;"></div>
+  <div class="heart-balloon" style="top: 25%; right: 15%; animation-delay: 3s; width: 40px; height: 56px;"></div>
+  <div class="heart-balloon" style="bottom: 20%; left: 20%; animation-delay: 6s; width: 35px; height: 49px;"></div>
+  
   <!-- 背景音乐 -->
   <audio id="bgm" autoplay loop muted>
-    <source src="/wedding.mp3" type="audio/mpeg" />
+    <source src="https://cdn.jsdelivr.net/gh/jasonkayzk/static-resources/audio/love.mp3" type="audio/mpeg" />
     您的浏览器不支持 audio 标签
   </audio>
 
   <!-- 提示用户点击开启声音 -->
-  <div id="unmute-tip">💡 请点击任意位置开启音乐</div>
+  <div id="unmute-tip">请点击任意位置开启背景音乐</div>
 
   <!-- 页面内容 -->
   <div class="container">
-    <div class="music-note">🎵</div>
+    <div class="/music/wedding">🎵</div>
     <h1>订婚邀请函</h1>
-    <div class="names">韦龙怡 ❤️ 张小芳</div>
-    <div class="details">
-      我们诚挚邀请您参加我们的订婚仪式<br /><br />
-      📅 时间：2025 年 8 月 2 日（星期六）中午 11:30<br />
-      📍 地点：上亿广场·尚亿锦禧堂<br /><br />
-      我们期待与您共度这段美好时光，一同见证爱的承诺。
+    
+    <div class="names">
+      <span>韦龙怡</span> 
+      <span class="heart-pulse">❤️</span> 
+      <span>张小芳</span>
     </div>
+    
+    <div class="details">
+      <div class="detail-item">
+        我们诚挚邀请您参加我们的订婚仪式
+      </div>
+      
+      <div class="detail-item">
+        📅 时间：2025 年 8 月 2 日（星期六）中午 11:30
+      </div>
+      
+      <div class="detail-item">
+        📍 地点：上亿广场·尚亿锦禧堂
+      </div>
+      
+      <div class="detail-item">
+        我们期待与您共度这段美好时光，一同见证爱的承诺。
+      </div>
+    </div>
+    
+    <!-- 照片展示 -->
+    <div class="photos">
+      <div class="photo-frame">
+        <div class="photo-placeholder">📸</div>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-placeholder">❤️</div>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-placeholder">💍</div>
+      </div>
+    </div>
+    
+    <!-- 爱情誓言卡片 -->
+    <div class="love-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <i>💌</i>
+          <div>点击查看我们的爱情誓言</div>
+        </div>
+        <div class="card-back">
+          "从相遇的那一刻起，<br>我们的故事便开始了。<br>
+          感谢你走进我的生命，<br>
+          让我的世界充满色彩。"
+        </div>
+      </div>
+    </div>
+    
     <div class="footer">
       请穿着正装出席 | 感谢您的祝福与陪伴
     </div>
@@ -125,14 +559,48 @@
 
   <!-- 动态花瓣效果 -->
   <script>
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 25; i++) {
       let petal = document.createElement("div");
       petal.classList.add("petal");
       petal.style.left = Math.random() * 100 + "vw";
-      petal.style.animationDuration = 5 + Math.random() * 5 + "s";
-      petal.style.opacity = 0.5 + Math.random() * 0.5;
+      petal.style.animationDuration = 8 + Math.random() * 10 + "s";
+      petal.style.animationDelay = Math.random() * 5 + "s";
+      petal.style.opacity = 0.3 + Math.random() * 0.7;
       document.body.appendChild(petal);
     }
+  </script>
+  
+  <!-- 星空背景生成 -->
+  <script>
+    const starsContainer = document.querySelector('.stars');
+    for (let i = 0; i < 150; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.width = Math.random() * 3 + 1 + 'px';
+      star.style.height = star.style.width;
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      star.style.animationDuration = 2 + Math.random() * 3 + 's';
+      starsContainer.appendChild(star);
+    }
+  </script>
+  
+  <!-- 闪光粒子效果 -->
+  <script>
+    document.addEventListener('mousemove', function(e) {
+      if (Math.random() > 0.7) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.style.left = e.pageX - 4 + 'px';
+        sparkle.style.top = e.pageY - 4 + 'px';
+        document.body.appendChild(sparkle);
+        
+        setTimeout(() => {
+          sparkle.remove();
+        }, 1500);
+      }
+    });
   </script>
 
   <!-- 自动播放提示处理 -->
@@ -143,7 +611,7 @@
 
       const unlockAudio = () => {
         audio.muted = false;
-        audio.play();
+        audio.play().catch(e => console.log('Autoplay prevented:', e));
         tip.style.display = 'none';
         window.removeEventListener('click', unlockAudio);
       };
