@@ -13,9 +13,10 @@
 
     body {
       font-family: "微软雅黑", "SimSun", "Helvetica Neue", sans-serif;
-      background: linear-gradient(135deg, #fff1f1, #ffe6e6, #fff1f1);
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f8bbd0' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      color: #c41e3a;
+      /* 修改背景为红色系渐变 */
+      background: linear-gradient(135deg, #9e0000, #cc0000, #e60000);
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      color: #ffffff; /* 文字改为白色以适应红色背景 */
       text-align: center;
       overflow-x: hidden;
       min-height: 100vh;
@@ -25,20 +26,20 @@
 
     /* 装饰元素 - 置于最上层 */
     .lantern-container {
-      position: fixed; /* 使用fixed定位确保在滚动时也能看到 */
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none; /* 允许点击穿透 */
-      z-index: 100; /* 最高层级 */
+      pointer-events: none;
+      z-index: 100;
     }
     
     .lantern {
       position: absolute;
       width: 60px;
       height: 80px;
-      background: linear-gradient(to bottom, #ff3838, #c41e3a);
+      background: linear-gradient(to bottom, #ff6666, #cc0000);
       border-radius: 50% 50% 30% 30%;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       animation: swing 3s ease-in-out infinite;
@@ -52,9 +53,9 @@
       transform: translateX(-50%);
       width: 40px;
       height: 60px;
-      border: 2px solid rgba(255,215,0,0.7);
+      border: 2px solid rgba(255, 255, 255, 0.8);
       border-radius: 50% 50% 30% 30%;
-      box-shadow: 0 0 10px rgba(255,215,0,0.5) inset;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6) inset;
     }
     
     .lantern:after {
@@ -63,9 +64,9 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #ffd700;
+      color: #ffffff;
       font-size: 1.5rem;
-      text-shadow: 0 0 5px rgba(255,215,0,0.8);
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
     }
     
     .lantern-rope {
@@ -84,38 +85,38 @@
     }
 
     .double-happiness-container {
-      position: fixed; /* 使用fixed定位确保在滚动时也能看到 */
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none; /* 允许点击穿透 */
-      z-index: 90; /* 次高层级 */
+      pointer-events: none;
+      z-index: 90;
     }
     
     .double-happiness {
       position: absolute;
-      color: #c41e3a;
+      color: #ffffff; /* 喜字改为白色 */
       font-size: 2rem;
-      opacity: 0.3;
+      opacity: 0.4;
       animation: float 8s ease-in-out infinite;
     }
 
     .red-envelope-container {
-      position: fixed; /* 使用fixed定位确保在滚动时也能看到 */
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none; /* 允许点击穿透 */
-      z-index: 80; /* 第三层级 */
+      pointer-events: none;
+      z-index: 80;
     }
     
     .red-envelope {
       position: absolute;
       width: 40px;
       height: 50px;
-      background: linear-gradient(45deg, #c41e3a, #ff3838);
+      background: linear-gradient(45deg, #9e0000, #cc0000);
       border-radius: 5px;
       animation: float 12s ease-in-out infinite;
     }
@@ -127,7 +128,7 @@
       left: 0;
       width: 40px;
       height: 2px;
-      background-color: #ffd700;
+      background-color: #ffffff;
     }
     
     .red-envelope:after {
@@ -137,7 +138,7 @@
       left: 20px;
       width: 2px;
       height: 50px;
-      background-color: #ffd700;
+      background-color: #ffffff;
     }
 
     @keyframes float {
@@ -150,12 +151,12 @@
       padding: 40px 20px;
       max-width: 750px;
       margin: 80px auto 60px;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.97), rgba(255, 248, 248, 0.97));
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.97), rgba(255, 240, 240, 0.97));
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(196, 30, 58, 0.2), 0 0 30px rgba(255, 215, 0, 0.1) inset;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       position: relative;
-      z-index: 10; /* 内容容器层级低于装饰 */
-      border: 2px solid #ffd700;
+      z-index: 10;
+      border: 2px solid #ff6666;
       overflow: hidden;
       width: calc(100% - 30px);
     }
@@ -167,13 +168,13 @@
       left: 0;
       right: 0;
       height: 5px;
-      background: linear-gradient(90deg, #c41e3a, #ffd700, #c41e3a);
+      background: linear-gradient(90deg, #9e0000, #cc0000, #9e0000);
     }
 
     .invitation-border {
       position: relative;
       padding: 20px;
-      border: 1px dashed #ffb7c5;
+      border: 1px dashed #ff9999;
       border-radius: 10px;
     }
 
@@ -185,7 +186,7 @@
       height: 20px;
       border-radius: 50%;
       background-color: #fff;
-      border: 2px solid #ffb7c5;
+      border: 2px solid #ff9999;
     }
     
     .invitation-border:before { top: -10px; left: -10px; }
@@ -195,9 +196,9 @@
 
     h1 {
       font-size: 2.8rem;
-      color: #c41e3a;
+      color: #9e0000;
       margin-bottom: 10px;
-      text-shadow: 0 2px 4px rgba(196, 30, 58, 0.2);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       letter-spacing: 5px;
       position: relative;
       padding: 15px 0;
@@ -205,25 +206,25 @@
 
     h1:before, h1:after {
       content: '★';
-      color: #ffd700;
+      color: #cc0000;
       margin: 0 10px;
     }
 
     .subtitle {
-      color: #c41e3a;
+      color: #9e0000;
       margin-bottom: 30px;
       font-size: 1.1rem;
       letter-spacing: 2px;
       padding-bottom: 10px;
-      border-bottom: 1px dashed #ffb7c5;
+      border-bottom: 1px dashed #ff9999;
     }
 
     .names {
       font-size: 2.2rem;
       margin: 30px 0;
-      color: #c41e3a;
+      color: #9e0000;
       font-weight: bold;
-      text-shadow: 0 2px 4px rgba(196, 30, 58, 0.1);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       letter-spacing: 3px;
       position: relative;
       display: flex;
@@ -235,12 +236,12 @@
 
     .names:before, .names:after {
       content: '❀';
-      color: #ffd700;
+      color: #cc0000;
       font-size: 1.8rem;
     }
 
     .heart-pulse {
-      color: #c41e3a;
+      color: #cc0000;
       font-size: 2rem;
       animation: pulse 1.5s infinite;
     }
@@ -261,16 +262,16 @@
     .detail-item {
       margin: 20px 0;
       padding: 15px 20px;
-      background: rgba(255, 248, 248, 0.8);
+      background: rgba(255, 245, 245, 0.8);
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.05);
       position: relative;
-      border-left: 4px solid #c41e3a;
+      border-left: 4px solid #9e0000;
       text-align: left;
     }
 
     .detail-item strong {
-      color: #c41e3a;
+      color: #9e0000;
       margin-right: 10px;
     }
 
@@ -287,7 +288,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #c41e3a;
+      color: #9e0000;
       font-size: 1.5rem;
       line-height: 1;
     }
@@ -321,7 +322,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border: 2px dashed #ffd700;
+      border: 2px dashed #ff6666;
       opacity: 0.7;
     }
 
@@ -338,11 +339,11 @@
     .photo-placeholder {
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, #ffecec, #ffd7e0);
+      background: linear-gradient(45deg, #ffeeee, #ffd5d5);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #c41e3a;
+      color: #9e0000;
       font-size: 3rem;
     }
 
@@ -383,10 +384,10 @@
     }
 
     .card-front {
-      background: linear-gradient(135deg, #c41e3a, #ff3838);
+      background: linear-gradient(135deg, #9e0000, #cc0000);
       color: white;
       font-size: 1.3rem;
-      border: 2px solid #ffd700;
+      border: 2px solid #ff9999;
     }
 
     .card-front i {
@@ -395,17 +396,17 @@
     }
 
     .card-back {
-      background: linear-gradient(135deg, #fff5f5, #ffe6e6);
-      color: #c41e3a;
+      background: linear-gradient(135deg, #fff5f5, #ffeeee);
+      color: #9e0000;
       transform: rotateY(180deg);
       font-size: 1rem;
       line-height: 1.8;
-      border: 2px solid #ffb7c5;
+      border: 2px solid #ff9999;
     }
 
     .invitation-text {
       font-size: 1.2rem;
-      color: #c41e3a;
+      color: #9e0000;
       line-height: 1.8;
       margin: 20px 0;
       padding: 15px;
@@ -417,9 +418,9 @@
     .footer {
       font-size: 1rem;
       margin-top: 40px;
-      color: #c41e3a;
+      color: #9e0000;
       padding: 15px;
-      background: rgba(255, 215, 0, 0.1);
+      background: rgba(255, 180, 180, 0.1);
       border-radius: 10px;
       position: relative;
       letter-spacing: 1px;
@@ -427,12 +428,12 @@
 
     .footer:before, .footer:after {
       content: "❦";
-      color: #ffd700;
+      color: #cc0000;
     }
 
     .music-note {
       font-size: 2rem;
-      color: #c41e3a;
+      color: #cc0000;
       animation: float 3s ease-in-out infinite;
       margin-bottom: 15px;
       display: inline-block;
@@ -444,11 +445,11 @@
       top: -50px;
       width: 25px;
       height: 25px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23c41e3a" d="M50,15 C60,5 80,5 85,15 C95,25 95,40 85,50 C75,60 60,60 50,50 C40,60 25,60 15,50 C5,40 5,25 15,15 C20,5 40,5 50,15 Z"/></svg>') no-repeat center center;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ffffff" d="M50,15 C60,5 80,5 85,15 C95,25 95,40 85,50 C75,60 60,60 50,50 C40,60 25,60 15,50 C5,40 5,25 15,15 C20,5 40,5 50,15 Z"/></svg>') no-repeat center center;
       background-size: contain;
       opacity: 0.7;
       animation: fall linear infinite;
-      z-index: 50; /* 花瓣层级较低 */
+      z-index: 50;
       pointer-events: none;
     }
 
@@ -462,7 +463,7 @@
       position: absolute;
       width: 8px;
       height: 8px;
-      background-color: #ffd700;
+      background-color: #ffffff;
       border-radius: 50%;
       pointer-events: none;
       z-index: 5;
@@ -484,11 +485,11 @@
       background: rgba(255, 255, 255, 0.95);
       padding: 20px 30px;
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       font-size: 1.1rem;
-      z-index: 1000; /* 提示框在最上层 */
-      border: 2px solid #ffd700;
-      color: #c41e3a;
+      z-index: 1000;
+      border: 2px solid #ff6666;
+      color: #9e0000;
       backdrop-filter: blur(5px);
       animation: pulse-tip 2s infinite;
       width: 90%;
@@ -501,7 +502,7 @@
       font-size: 1.8rem;
       display: block;
       margin-bottom: 10px;
-      color: #c41e3a;
+      color: #9e0000;
     }
 
     @keyframes pulse-tip {
@@ -561,48 +562,54 @@
       .lantern:after {
         font-size: 1rem;
       }
-      
-      /* 手机端调整喜字大小 */
-      .double-happiness {
-        font-size: 1.5rem;
-      }
     }
     
     @media (max-width: 480px) {
       h1 {
         font-size: 1.8rem;
         letter-spacing: 2px;
+        padding: 10px 0;
       }
       
       .subtitle {
         font-size: 0.9rem;
+        margin-bottom: 20px;
       }
       
       .names {
         font-size: 1.6rem;
-        flex-direction: column;
-      }
-      
-      .names:before, .names:after {
-        display: none;
+        margin: 25px 0;
+        gap: 10px;
       }
       
       .heart-pulse {
-        font-size: 1.6rem;
-        margin: 10px 0;
+        font-size: 1.8rem;
       }
       
-      /* 手机端确保装饰元素可见 */
-      .lantern:nth-child(1) { left: 3%; top: 10%; }
-      .lantern:nth-child(2) { right: 3%; top: 15%; }
-      
-      .double-happiness {
-        font-size: 1.2rem;
+      .details {
+        font-size: 1rem;
+        margin: 25px 0;
       }
       
-      .double-happiness:nth-child(1) { left: 5%; top: 20%; }
-      .double-happiness:nth-child(2) { right: 5%; bottom: 30%; }
-      .double-happiness:nth-child(3) { right: 5%; top: 40%; }
+      .detail-item {
+        margin: 15px 0;
+        padding: 12px 15px;
+      }
+      
+      .photo-frame {
+        width: 130px;
+        height: 130px;
+      }
+      
+      /* 手机端调整灯笼大小和位置 */
+      .lantern {
+        width: 40px;
+        height: 60px;
+      }
+      
+      .lantern:after {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -643,7 +650,7 @@
   <!-- 页面内容 -->
   <div class="container">
     <div class="invitation-border">
-      <div></div> <!-- 用于定位右下角装饰点 -->
+      <div></div>
       <div class="music-note">🎵</div>
       <h1>订婚之喜</h1>
       <div class="subtitle">佳偶天成 · 缘定今生</div>
