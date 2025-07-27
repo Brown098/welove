@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>订婚邀请函 - 韦龙怡 ❤️ 张小芳</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "微软雅黑", sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 700px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      margin-top: 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #c71585;
+      margin-bottom: 10px;
+    }
+
+    .names {
+      font-size: 2.2em;
+      margin: 20px 0;
+      color: #dc143c;
+      font-weight: bold;
+    }
+
+    .details {
+      font-size: 1.2em;
+      line-height: 1.8;
+      margin: 30px 0;
+    }
+
+    .footer {
+      font-size: 1em;
+      margin-top: 40px;
+      color: #999;
+    }
+
+    .music-note {
+      font-size: 2em;
+      color: #c71585;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* 飘落花瓣效果 */
+    .petal {
+      position: fixed;
+      top: -50px;
+      width: 20px;
+      height: 20px;
+      background: url('https://cdn.jsdelivr.net/gh/jasonkayzk/static-resources/petal.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* 音乐提示框 */
+    #unmute-tip {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.95);
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #ccc;
+      font-size: 1.2em;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 背景音乐 -->
+  <audio id="bgm" autoplay loop muted>
+    <source src="music/wedding.mp3" type="audio/mpeg" />
+    您的浏览器不支持 audio 标签
+  </audio>
+
+  <!-- 提示用户点击开启声音 -->
+  <div id="unmute-tip">💡 请点击任意位置开启音乐</div>
+
+  <!-- 页面内容 -->
+  <div class="container">
+    <div class="music-note">🎵</div>
+    <h1>订婚邀请函</h1>
+    <div class="names">韦龙怡 ❤️ 张小芳</div>
+    <div class="details">
+      我们诚挚邀请您参加我们的订婚仪式<br /><br />
+      📅 时间：2025 年 8 月 2 日（星期六）中午 11:30<br />
+      📍 地点：上亿广场·尚亿锦禧堂<br /><br />
+      我们期待与您共度这段美好时光，一同见证爱的承诺。
+    </div>
+    <div class="footer">
+      请穿着正装出席 | 感谢您的祝福与陪伴
+    </div>
+  </div>
+
+  <!-- 动态花瓣效果 -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      let petal = document.createElement("div");
+      petal.classList.add("petal");
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.animationDuration = 5 + Math.random() * 5 + "s";
+      petal.style.opacity = 0.5 + Math.random() * 0.5;
+      document.body.appendChild(petal);
+    }
+  </script>
+
+  <!-- 自动播放提示处理 -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const audio = document.getElementById('bgm');
+      const tip = document.getElementById('unmute-tip');
+
+      const unlockAudio = () => {
+        audio.muted = false;
+        audio.play();
+        tip.style.display = 'none';
+        window.removeEventListener('click', unlockAudio);
+      };
+
+      window.addEventListener('click', unlockAudio);
+    });
+  </script>
+</body>
+</html>
