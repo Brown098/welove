@@ -23,7 +23,17 @@
       padding: 0 15px;
     }
 
-    /* 装饰元素 */
+    /* 装饰元素 - 置于最上层 */
+    .lantern-container {
+      position: fixed; /* 使用fixed定位确保在滚动时也能看到 */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* 允许点击穿透 */
+      z-index: 100; /* 最高层级 */
+    }
+    
     .lantern {
       position: absolute;
       width: 60px;
@@ -32,7 +42,6 @@
       border-radius: 50% 50% 30% 30%;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       animation: swing 3s ease-in-out infinite;
-      z-index: 1;
     }
     
     .lantern:before {
@@ -74,15 +83,34 @@
       50% { transform: rotate(5deg); }
     }
 
+    .double-happiness-container {
+      position: fixed; /* 使用fixed定位确保在滚动时也能看到 */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* 允许点击穿透 */
+      z-index: 90; /* 次高层级 */
+    }
+    
     .double-happiness {
       position: absolute;
       color: #c41e3a;
       font-size: 2rem;
-      opacity: 0.2;
+      opacity: 0.3;
       animation: float 8s ease-in-out infinite;
-      z-index: 1;
     }
 
+    .red-envelope-container {
+      position: fixed; /* 使用fixed定位确保在滚动时也能看到 */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* 允许点击穿透 */
+      z-index: 80; /* 第三层级 */
+    }
+    
     .red-envelope {
       position: absolute;
       width: 40px;
@@ -90,7 +118,6 @@
       background: linear-gradient(45deg, #c41e3a, #ff3838);
       border-radius: 5px;
       animation: float 12s ease-in-out infinite;
-      z-index: 1;
     }
     
     .red-envelope:before {
@@ -113,6 +140,11 @@
       background-color: #ffd700;
     }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
     /* 主容器 */
     .container {
       padding: 40px 20px;
@@ -122,7 +154,7 @@
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(196, 30, 58, 0.2), 0 0 30px rgba(255, 215, 0, 0.1) inset;
       position: relative;
-      z-index: 10;
+      z-index: 10; /* 内容容器层级低于装饰 */
       border: 2px solid #ffd700;
       overflow: hidden;
       width: calc(100% - 30px);
@@ -406,11 +438,6 @@
       display: inline-block;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
     /* 飘落花瓣效果 */
     .petal {
       position: fixed;
@@ -421,7 +448,8 @@
       background-size: contain;
       opacity: 0.7;
       animation: fall linear infinite;
-      z-index: 2;
+      z-index: 50; /* 花瓣层级较低 */
+      pointer-events: none;
     }
 
     @keyframes fall {
@@ -458,7 +486,7 @@
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
       font-size: 1.1rem;
-      z-index: 1000;
+      z-index: 1000; /* 提示框在最上层 */
       border: 2px solid #ffd700;
       color: #c41e3a;
       backdrop-filter: blur(5px);
@@ -481,7 +509,7 @@
       50% { transform: translate(-50%, -50%) scale(1.05); }
     }
 
-    /* 响应式设计 */
+    /* 响应式设计 - 优化手机端显示 */
     @media (max-width: 768px) {
       .container {
         margin: 60px auto 40px;
@@ -524,46 +552,19 @@
         height: 130px;
       }
       
-      .love-card {
-        width: 250px;
-        height: 160px;
-      }
-      
-      .card-front {
-        font-size: 1.2rem;
-      }
-      
-      .card-front i {
-        font-size: 2.2rem;
-      }
-      
-      .card-back {
-        font-size: 0.95rem;
-      }
-      
-      .invitation-text {
-        font-size: 1.1rem;
-        margin: 15px 0;
-        padding: 12px;
-      }
-      
-      .footer {
-        font-size: 0.9rem;
-        margin-top: 30px;
-        padding: 12px;
-      }
-      
-      .music-note {
-        font-size: 1.8rem;
-      }
-      
+      /* 手机端调整灯笼大小和位置 */
       .lantern {
-        width: 50px;
-        height: 70px;
+        width: 40px;
+        height: 60px;
       }
       
       .lantern:after {
-        font-size: 1.2rem;
+        font-size: 1rem;
+      }
+      
+      /* 手机端调整喜字大小 */
+      .double-happiness {
+        font-size: 1.5rem;
       }
     }
     
@@ -591,44 +592,17 @@
         margin: 10px 0;
       }
       
-      .details {
-        font-size: 0.95rem;
+      /* 手机端确保装饰元素可见 */
+      .lantern:nth-child(1) { left: 3%; top: 10%; }
+      .lantern:nth-child(2) { right: 3%; top: 15%; }
+      
+      .double-happiness {
+        font-size: 1.2rem;
       }
       
-      .photo-frame {
-        width: 110px;
-        height: 110px;
-      }
-      
-      .love-card {
-        width: 220px;
-        height: 150px;
-      }
-      
-      .card-front {
-        font-size: 1.1rem;
-      }
-      
-      .card-back {
-        font-size: 0.9rem;
-      }
-      
-      .invitation-text {
-        font-size: 1rem;
-      }
-      
-      .footer {
-        font-size: 0.85rem;
-      }
-      
-      .lantern {
-        width: 40px;
-        height: 60px;
-      }
-      
-      .lantern:after {
-        font-size: 1rem;
-      }
+      .double-happiness:nth-child(1) { left: 5%; top: 20%; }
+      .double-happiness:nth-child(2) { right: 5%; bottom: 30%; }
+      .double-happiness:nth-child(3) { right: 5%; top: 40%; }
     }
   </style>
 </head>
@@ -643,22 +617,28 @@
   <!-- 提示用户点击开启声音 -->
   <div id="unmute-tip">请点击任意位置开启背景音乐</div>
 
-  <!-- 装饰灯笼 -->
-  <div class="lantern" style="top: 10%; left: 5%;">
-    <div class="lantern-rope"></div>
-  </div>
-  <div class="lantern" style="top: 15%; right: 5%; animation-delay: 1s;">
-    <div class="lantern-rope"></div>
+  <!-- 装饰灯笼容器（置于最上层） -->
+  <div class="lantern-container">
+    <div class="lantern" style="top: 10%; left: 5%;">
+      <div class="lantern-rope"></div>
+    </div>
+    <div class="lantern" style="top: 15%; right: 5%; animation-delay: 1s;">
+      <div class="lantern-rope"></div>
+    </div>
   </div>
 
-  <!-- 喜字装饰 -->
-  <div class="double-happiness" style="top: 20%; left: 10%; animation-delay: 0s;">囍</div>
-  <div class="double-happiness" style="bottom: 30%; right: 15%; animation-delay: 2s;">囍</div>
-  <div class="double-happiness" style="top: 40%; right: 10%; animation-delay: 4s;">囍</div>
+  <!-- 喜字装饰容器（置于上层） -->
+  <div class="double-happiness-container">
+    <div class="double-happiness" style="top: 20%; left: 10%; animation-delay: 0s;">囍</div>
+    <div class="double-happiness" style="bottom: 30%; right: 15%; animation-delay: 2s;">囍</div>
+    <div class="double-happiness" style="top: 40%; right: 10%; animation-delay: 4s;">囍</div>
+  </div>
 
-  <!-- 红包装饰 -->
-  <div class="red-envelope" style="top: 25%; right: 8%; animation-delay: 1s;"></div>
-  <div class="red-envelope" style="bottom: 20%; left: 12%; animation-delay: 3s;"></div>
+  <!-- 红包装饰容器（置于上层） -->
+  <div class="red-envelope-container">
+    <div class="red-envelope" style="top: 25%; right: 8%; animation-delay: 1s;"></div>
+    <div class="red-envelope" style="bottom: 20%; left: 12%; animation-delay: 3s;"></div>
+  </div>
 
   <!-- 页面内容 -->
   <div class="container">
