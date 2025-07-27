@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>订婚邀请函 - 韦龙怡 ❤️ 张小芳</title>
+  <title>订婚之喜 - 韦龙怡 ❤️ 张小芳</title>
   <style>
     * {
       margin: 0;
@@ -12,9 +12,10 @@
     }
 
     body {
-      font-family: "微软雅黑", "Helvetica Neue", sans-serif;
-      background: linear-gradient(135deg, #ffafbd, #ffc3a0, #fff0f5);
-      color: #5a1e1e;
+      font-family: "微软雅黑", "SimSun", "Helvetica Neue", sans-serif;
+      background: linear-gradient(135deg, #fff1f1, #ffe6e6, #fff1f1);
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f8bbd0' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      color: #c41e3a;
       text-align: center;
       overflow-x: hidden;
       min-height: 100vh;
@@ -22,95 +23,94 @@
       padding: 0 15px;
     }
 
-    /* 星空背景 */
-    .stars {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .star {
-      position: absolute;
-      background-color: #fff;
-      border-radius: 50%;
-      animation: twinkle 3s infinite ease-in-out;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
-
     /* 装饰元素 */
-    .decoration {
+    .lantern {
       position: absolute;
+      width: 60px;
+      height: 80px;
+      background: linear-gradient(to bottom, #ff3838, #c41e3a);
+      border-radius: 50% 50% 30% 30%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      animation: swing 3s ease-in-out infinite;
+      z-index: 1;
+    }
+    
+    .lantern:before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 60px;
+      border: 2px solid rgba(255,215,0,0.7);
+      border-radius: 50% 50% 30% 30%;
+      box-shadow: 0 0 10px rgba(255,215,0,0.5) inset;
+    }
+    
+    .lantern:after {
+      content: '喜';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffd700;
+      font-size: 1.5rem;
+      text-shadow: 0 0 5px rgba(255,215,0,0.8);
+    }
+    
+    .lantern-rope {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 20px;
+      background-color: #8b4513;
+    }
+
+    @keyframes swing {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+
+    .double-happiness {
+      position: absolute;
+      color: #c41e3a;
+      font-size: 2rem;
+      opacity: 0.2;
+      animation: float 8s ease-in-out infinite;
       z-index: 1;
     }
 
-    .heart-balloon {
-      width: 50px;
-      height: 70px;
-      background: radial-gradient(circle at 30% 30%, #ff6b8b, #ff3d67);
+    .red-envelope {
       position: absolute;
-      border-radius: 50%;
-      transform: rotate(45deg);
-      animation: float 15s infinite ease-in-out;
-      box-shadow: 0 0 15px rgba(255, 61, 103, 0.5);
-    }
-
-    .heart-balloon:before, .heart-balloon:after {
-      content: '';
-      position: absolute;
-      width: 50px;
+      width: 40px;
       height: 50px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ff6b8b, #ff3d67);
-    }
-
-    .heart-balloon:before {
-      top: -25px;
-      left: 0;
-    }
-
-    .heart-balloon:after {
-      top: 0;
-      left: -25px;
-    }
-
-    .ribbon {
-      position: absolute;
-      width: 200px;
-      height: 40px;
-      background: linear-gradient(45deg, #e53935, #e35d5b);
-      transform: rotate(-30deg);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      background: linear-gradient(45deg, #c41e3a, #ff3838);
+      border-radius: 5px;
+      animation: float 12s ease-in-out infinite;
       z-index: 1;
     }
-
-    .ribbon:before, .ribbon:after {
+    
+    .red-envelope:before {
       content: '';
       position: absolute;
-      width: 0;
-      height: 0;
-      border-style: solid;
+      top: 25px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: #ffd700;
     }
-
-    .ribbon:before {
+    
+    .red-envelope:after {
+      content: '';
+      position: absolute;
       top: 0;
-      right: -20px;
-      border-width: 20px 0 20px 20px;
-      border-color: transparent transparent transparent #e53935;
-    }
-
-    .ribbon:after {
-      bottom: 0;
-      left: -20px;
-      border-width: 20px 20px 20px 0;
-      border-color: transparent #e53935 transparent transparent;
+      left: 20px;
+      width: 2px;
+      height: 50px;
+      background-color: #ffd700;
     }
 
     /* 主容器 */
@@ -118,12 +118,12 @@
       padding: 40px 20px;
       max-width: 750px;
       margin: 80px auto 60px;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 240, 245, 0.95));
-      border-radius: 25px;
-      box-shadow: 0 15px 50px rgba(199, 21, 133, 0.3), 0 0 100px rgba(255, 215, 0, 0.2) inset;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.97), rgba(255, 248, 248, 0.97));
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(196, 30, 58, 0.2), 0 0 30px rgba(255, 215, 0, 0.1) inset;
       position: relative;
       z-index: 10;
-      border: 3px solid #ffd700;
+      border: 2px solid #ffd700;
       overflow: hidden;
       width: calc(100% - 30px);
     }
@@ -131,71 +131,84 @@
     .container:before {
       content: '';
       position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      background: linear-gradient(45deg, #ffd700, #ff6b8b, #ffd700, #ff6b8b);
-      z-index: -1;
-      border-radius: 30px;
-      animation: border-glow 3s infinite alternate;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #c41e3a, #ffd700, #c41e3a);
     }
 
-    @keyframes border-glow {
-      0% { opacity: 0.3; }
-      100% { opacity: 0.7; }
+    .invitation-border {
+      position: relative;
+      padding: 20px;
+      border: 1px dashed #ffb7c5;
+      border-radius: 10px;
     }
+
+    .invitation-border:before, .invitation-border:after,
+    .invitation-border > div:before, .invitation-border > div:after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 2px solid #ffb7c5;
+    }
+    
+    .invitation-border:before { top: -10px; left: -10px; }
+    .invitation-border:after { top: -10px; right: -10px; }
+    .invitation-border > div:before { bottom: -10px; left: -10px; }
+    .invitation-border > div:after { bottom: -10px; right: -10px; }
 
     h1 {
       font-size: 2.8rem;
-      color: #c71585;
-      margin-bottom: 15px;
-      text-shadow: 0 3px 6px rgba(199, 21, 133, 0.3);
-      letter-spacing: 3px;
+      color: #c41e3a;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(196, 30, 58, 0.2);
+      letter-spacing: 5px;
       position: relative;
-      padding-bottom: 15px;
+      padding: 15px 0;
     }
 
-    h1:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 150px;
-      height: 3px;
-      background: linear-gradient(to right, transparent, #ffd700, transparent);
+    h1:before, h1:after {
+      content: '★';
+      color: #ffd700;
+      margin: 0 10px;
+    }
+
+    .subtitle {
+      color: #c41e3a;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #ffb7c5;
     }
 
     .names {
       font-size: 2.2rem;
-      margin: 25px 0;
-      color: #dc143c;
+      margin: 30px 0;
+      color: #c41e3a;
       font-weight: bold;
-      text-shadow: 0 2px 4px rgba(220, 20, 60, 0.3);
-      letter-spacing: 2px;
+      text-shadow: 0 2px 4px rgba(196, 30, 58, 0.1);
+      letter-spacing: 3px;
       position: relative;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
     }
 
     .names:before, .names:after {
-      content: '✧';
+      content: '❀';
       color: #ffd700;
-      margin: 0 8px;
       font-size: 1.8rem;
-      animation: spin 4s infinite linear;
-    }
-
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
     }
 
     .heart-pulse {
-      color: #ff6b8b;
+      color: #c41e3a;
       font-size: 2rem;
       animation: pulse 1.5s infinite;
     }
@@ -207,46 +220,52 @@
 
     .details {
       font-size: 1.1rem;
-      line-height: 1.8;
+      line-height: 2;
       margin: 30px 0;
       padding: 0 10px;
       position: relative;
     }
 
     .detail-item {
-      margin: 15px 0;
-      padding: 12px;
-      background: rgba(255, 240, 245, 0.7);
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin: 20px 0;
+      padding: 15px 20px;
+      background: rgba(255, 248, 248, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
       position: relative;
-      border-left: 4px solid #ff6b8b;
+      border-left: 4px solid #c41e3a;
+      text-align: left;
+    }
+
+    .detail-item strong {
+      color: #c41e3a;
+      margin-right: 10px;
     }
 
     .detail-item:before {
-      content: '❀';
+      content: '•';
       position: absolute;
-      left: -15px;
+      left: -8px;
       top: 50%;
       transform: translateY(-50%);
       background: #fff;
-      width: 30px;
-      height: 30px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ff6b8b;
-      font-size: 1.2rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      color: #c41e3a;
+      font-size: 1.5rem;
+      line-height: 1;
     }
 
     /* 照片展示 */
     .photos {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin: 30px 0;
+      gap: 20px;
+      margin: 40px 0;
       flex-wrap: wrap;
     }
 
@@ -256,10 +275,22 @@
       border-radius: 10px;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 5px solid #fff;
       transform: rotate(-3deg);
       transition: all 0.4s ease;
       flex-shrink: 0;
+    }
+    
+    .photo-frame:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px dashed #ffd700;
+      opacity: 0.7;
     }
 
     .photo-frame:nth-child(even) {
@@ -269,16 +300,17 @@
     .photo-frame:hover {
       transform: rotate(0) scale(1.05);
       z-index: 5;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
     .photo-placeholder {
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, #ffafbd, #ffc3a0);
+      background: linear-gradient(45deg, #ffecec, #ffd7e0);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      color: #c41e3a;
       font-size: 3rem;
     }
 
@@ -309,19 +341,20 @@
       width: 100%;
       height: 100%;
       backface-visibility: hidden;
-      border-radius: 15px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       padding: 15px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
 
     .card-front {
-      background: linear-gradient(135deg, #ff6b8b, #ff8e53);
+      background: linear-gradient(135deg, #c41e3a, #ff3838);
       color: white;
       font-size: 1.3rem;
+      border: 2px solid #ffd700;
     }
 
     .card-front i {
@@ -330,52 +363,52 @@
     }
 
     .card-back {
-      background: linear-gradient(135deg, #fff0f5, #ffe4e1);
-      color: #5a1e1e;
+      background: linear-gradient(135deg, #fff5f5, #ffe6e6);
+      color: #c41e3a;
       transform: rotateY(180deg);
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.8;
+      border: 2px solid #ffb7c5;
+    }
+
+    .invitation-text {
+      font-size: 1.2rem;
+      color: #c41e3a;
+      line-height: 1.8;
+      margin: 20px 0;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 10px;
+      letter-spacing: 1px;
     }
 
     .footer {
       font-size: 1rem;
       margin-top: 40px;
-      color: #8b4513;
-      padding: 12px;
+      color: #c41e3a;
+      padding: 15px;
       background: rgba(255, 215, 0, 0.1);
       border-radius: 10px;
       position: relative;
+      letter-spacing: 1px;
     }
 
-    .footer:before {
+    .footer:before, .footer:after {
       content: "❦";
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #ff6b8b;
-    }
-
-    .footer:after {
-      content: "❦";
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #ff6b8b;
+      color: #ffd700;
     }
 
     .music-note {
       font-size: 2rem;
-      color: #c71585;
+      color: #c41e3a;
       animation: float 3s ease-in-out infinite;
       margin-bottom: 15px;
       display: inline-block;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(5deg); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
 
     /* 飘落花瓣效果 */
@@ -384,15 +417,15 @@
       top: -50px;
       width: 25px;
       height: 25px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23ff6b8b" d="M50,15 C60,5 80,5 85,15 C95,25 95,40 85,50 C75,60 60,60 50,50 C40,60 25,60 15,50 C5,40 5,25 15,15 C20,5 40,5 50,15 Z"/></svg>') no-repeat center center;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23c41e3a" d="M50,15 C60,5 80,5 85,15 C95,25 95,40 85,50 C75,60 60,60 50,50 C40,60 25,60 15,50 C5,40 5,25 15,15 C20,5 40,5 50,15 Z"/></svg>') no-repeat center center;
       background-size: contain;
-      opacity: 0.8;
+      opacity: 0.7;
       animation: fall linear infinite;
       z-index: 2;
     }
 
     @keyframes fall {
-      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.8; }
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.7; }
       100% { transform: translateY(100vh) translateX(50px) rotate(360deg); opacity: 0; }
     }
 
@@ -423,11 +456,11 @@
       background: rgba(255, 255, 255, 0.95);
       padding: 20px 30px;
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(199, 21, 133, 0.3);
+      box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
       font-size: 1.1rem;
       z-index: 1000;
       border: 2px solid #ffd700;
-      color: #c71585;
+      color: #c41e3a;
       backdrop-filter: blur(5px);
       animation: pulse-tip 2s infinite;
       width: 90%;
@@ -440,7 +473,7 @@
       font-size: 1.8rem;
       display: block;
       margin-bottom: 10px;
-      color: #ff6b8b;
+      color: #c41e3a;
     }
 
     @keyframes pulse-tip {
@@ -457,12 +490,19 @@
       
       h1 {
         font-size: 2.2rem;
-        padding-bottom: 10px;
+        letter-spacing: 3px;
+        padding: 10px 0;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
       }
       
       .names {
         font-size: 1.8rem;
-        margin: 20px 0;
+        margin: 25px 0;
+        gap: 10px;
       }
       
       .heart-pulse {
@@ -475,8 +515,8 @@
       }
       
       .detail-item {
-        margin: 12px 0;
-        padding: 10px;
+        margin: 15px 0;
+        padding: 12px 15px;
       }
       
       .photo-frame {
@@ -501,37 +541,54 @@
         font-size: 0.95rem;
       }
       
+      .invitation-text {
+        font-size: 1.1rem;
+        margin: 15px 0;
+        padding: 12px;
+      }
+      
       .footer {
         font-size: 0.9rem;
         margin-top: 30px;
-        padding: 10px;
+        padding: 12px;
       }
       
       .music-note {
         font-size: 1.8rem;
       }
       
-      /* 在移动端隐藏部分装饰元素 */
-      .ribbon {
-        display: none;
+      .lantern {
+        width: 50px;
+        height: 70px;
       }
       
-      .heart-balloon {
-        display: none;
+      .lantern:after {
+        font-size: 1.2rem;
       }
     }
     
     @media (max-width: 480px) {
       h1 {
         font-size: 1.8rem;
+        letter-spacing: 2px;
+      }
+      
+      .subtitle {
+        font-size: 0.9rem;
       }
       
       .names {
         font-size: 1.6rem;
+        flex-direction: column;
+      }
+      
+      .names:before, .names:after {
+        display: none;
       }
       
       .heart-pulse {
         font-size: 1.6rem;
+        margin: 10px 0;
       }
       
       .details {
@@ -556,29 +613,29 @@
         font-size: 0.9rem;
       }
       
+      .invitation-text {
+        font-size: 1rem;
+      }
+      
       .footer {
         font-size: 0.85rem;
+      }
+      
+      .lantern {
+        width: 40px;
+        height: 60px;
+      }
+      
+      .lantern:after {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 星空背景 -->
-  <div class="stars"></div>
-  
-  <!-- 装饰飘带 -->
-  <div class="ribbon" style="top: 50px; left: -50px;"></div>
-  <div class="ribbon" style="bottom: 100px; right: -50px; transform: rotate(30deg);"></div>
-  
-  <!-- 爱心气球 -->
-  <div class="heart-balloon" style="top: 15%; left: 10%; animation-delay: 0s;"></div>
-  <div class="heart-balloon" style="top: 25%; right: 15%; animation-delay: 3s; width: 40px; height: 56px;"></div>
-  <div class="heart-balloon" style="bottom: 20%; left: 20%; animation-delay: 6s; width: 35px; height: 49px;"></div>
-  
   <!-- 背景音乐 -->
   <audio id="bgm" autoplay loop muted>
-    <!-- 使用相对路径指向仓库中的音频文件 -->
     <source src="wedding.mp3" type="audio/mpeg" />
     您的浏览器不支持 audio 标签
   </audio>
@@ -586,94 +643,100 @@
   <!-- 提示用户点击开启声音 -->
   <div id="unmute-tip">请点击任意位置开启背景音乐</div>
 
+  <!-- 装饰灯笼 -->
+  <div class="lantern" style="top: 10%; left: 5%;">
+    <div class="lantern-rope"></div>
+  </div>
+  <div class="lantern" style="top: 15%; right: 5%; animation-delay: 1s;">
+    <div class="lantern-rope"></div>
+  </div>
+
+  <!-- 喜字装饰 -->
+  <div class="double-happiness" style="top: 20%; left: 10%; animation-delay: 0s;">囍</div>
+  <div class="double-happiness" style="bottom: 30%; right: 15%; animation-delay: 2s;">囍</div>
+  <div class="double-happiness" style="top: 40%; right: 10%; animation-delay: 4s;">囍</div>
+
+  <!-- 红包装饰 -->
+  <div class="red-envelope" style="top: 25%; right: 8%; animation-delay: 1s;"></div>
+  <div class="red-envelope" style="bottom: 20%; left: 12%; animation-delay: 3s;"></div>
+
   <!-- 页面内容 -->
   <div class="container">
-    <div class="music-note">🎵</div>
-    <h1>订婚邀请函</h1>
-    
-    <div class="names">
-      <span>韦龙怡</span> 
-      <span class="heart-pulse">❤️</span> 
-      <span>张小芳</span>
-    </div>
-    
-    <div class="details">
-      <div class="detail-item">
-        我们诚挚邀请您参加我们的订婚仪式
+    <div class="invitation-border">
+      <div></div> <!-- 用于定位右下角装饰点 -->
+      <div class="music-note">🎵</div>
+      <h1>订婚之喜</h1>
+      <div class="subtitle">佳偶天成 · 缘定今生</div>
+      
+      <div class="names">
+        <span>韦龙怡</span> 
+        <span class="heart-pulse">❤️</span> 
+        <span>张小芳</span>
       </div>
       
-      <div class="detail-item">
-        📅 时间：2025 年 8 月 2 日（星期六）中午 11:30
+      <div class="invitation-text">
+        谨定于公历2025年8月2日（星期六）举行订婚仪式，略备薄宴，恭请光临。
       </div>
       
-      <div class="detail-item">
-        📍 地点：上亿广场·尚亿锦禧堂
-      </div>
-      
-      <div class="detail-item">
-        我们期待与您共度这段美好时光，一同见证爱的承诺。
-      </div>
-    </div>
-    
-    <!-- 照片展示 -->
-    <div class="photos">
-      <div class="photo-frame">
-        <div class="photo-placeholder">📸</div>
-      </div>
-      <div class="photo-frame">
-        <div class="photo-placeholder">❤️</div>
-      </div>
-      <div class="photo-frame">
-        <div class="photo-placeholder">💍</div>
-      </div>
-    </div>
-    
-    <!-- 爱情誓言卡片 -->
-    <div class="love-card">
-      <div class="card-inner">
-        <div class="card-front">
-          <i>💌</i>
-          <div>点击查看我们的爱情誓言</div>
+      <div class="details">
+        <div class="detail-item">
+          <strong>📅 时间：</strong>2025年8月2日（星期六）中午11:30
         </div>
-        <div class="card-back">
-          "从相遇的那一刻起，<br>我们的故事便开始了。<br>
-          感谢你走进我的生命，<br>
-          让我的世界充满色彩。"
+        
+        <div class="detail-item">
+          <strong>📍 地点：</strong>上亿广场·尚亿锦禧堂
+        </div>
+        
+        <div class="detail-item">
+          <strong>💌 邀请语：</strong>承蒙厚爱，不胜荣幸。诚邀您见证我们的幸福时刻，共享喜悦。
         </div>
       </div>
-    </div>
-    
-    <div class="footer">
-      请穿着正装出席 | 感谢您的祝福与陪伴
+      
+      <!-- 照片展示 -->
+      <div class="photos">
+        <div class="photo-frame">
+          <div class="photo-placeholder">📸</div>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder">❤️</div>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder">💍</div>
+        </div>
+      </div>
+      
+      <!-- 爱情誓言卡片 -->
+      <div class="love-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <i>💌</i>
+            <div>点击查看爱情誓言</div>
+          </div>
+          <div class="card-back">
+            "从相遇的那一刻起，<br>我们的故事便开始了。<br>
+            感谢你走进我的生命，<br>
+            让我的世界充满色彩。<br>
+            往后余生，风雨同舟。"
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer">
+        <span>恭请光临</span>
+      </div>
     </div>
   </div>
 
   <!-- 动态花瓣效果 -->
   <script>
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 20; i++) {
       let petal = document.createElement("div");
       petal.classList.add("petal");
       petal.style.left = Math.random() * 100 + "vw";
       petal.style.animationDuration = 8 + Math.random() * 10 + "s";
       petal.style.animationDelay = Math.random() * 5 + "s";
-      petal.style.opacity = 0.3 + Math.random() * 0.7;
+      petal.style.opacity = 0.5 + Math.random() * 0.5;
       document.body.appendChild(petal);
-    }
-  </script>
-  
-  <!-- 星空背景生成 -->
-  <script>
-    const starsContainer = document.querySelector('.stars');
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.width = Math.random() * 3 + 1 + 'px';
-      star.style.height = star.style.width;
-      star.style.left = Math.random() * 100 + '%';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.animationDelay = Math.random() * 5 + 's';
-      star.style.animationDuration = 2 + Math.random() * 3 + 's';
-      starsContainer.appendChild(star);
     }
   </script>
   
