@@ -95,9 +95,9 @@
     
     .double-happiness {
       position: absolute;
-      color: #c41e3a;
-      font-size: 2rem;
-      opacity: 0.3;
+      color: #ff0000;
+      font-size: 5rem;
+      opacity: 0.8;
       animation: float 8s ease-in-out infinite;
     }
 
@@ -440,21 +440,20 @@
     }
 
     /* 飘落花瓣效果 */
-    .petal {
+  .petal {
       position: fixed;
       top: -50px;
-      width: 25px;
-      height: 25px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23c41e3a" d="M50,15 C60,5 80,5 85,15 C95,25 95,40 85,50 C75,60 60,60 50,50 C40,60 25,60 15,50 C5,40 5,25 15,15 C20,5 40,5 50,15 Z"/></svg>') no-repeat center center;
-      background-size: contain;
-      opacity: 0.7;
+      font-size: 20px;
+      color: #c41e3a;
+      opacity: 0.8;
       animation: fall linear infinite;
-      z-index: 50; /* 花瓣层级较低 */
+      z-index: 50; /* 囍字层级较低 */
       pointer-events: none;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    @keyframes fall {
-      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.7; }
+    @keyframes fall {s
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.9; }
       100% { transform: translateY(100vh) translateX(50px) rotate(360deg); opacity: 0; }
     }
 
@@ -631,14 +630,15 @@
 
   <!-- 喜字装饰容器（置于上层） -->
   <div class="double-happiness-container">
-    <div class="double-happiness" style="top: 20%; left: 10%; animation-delay: 0s;">囍</div>
-    <div class="double-happiness" style="bottom: 30%; right: 15%; animation-delay: 2s;">囍</div>
+    <div class="double-happiness" style="top: 25%; left: 10%; animation-delay: 0s;">囍</div>
+    <div class="double-happiness" style="bottom: 30%; right: 10%; animation-delay: 2s;">囍</div>
     <div class="double-happiness" style="top: 40%; right: 10%; animation-delay: 4s;">囍</div>
+    <div class="double-happiness" style="bottom: 40%;left: 10%; animation-delay: 4s;">囍</div>
   </div>
 
   <!-- 红包装饰容器（置于上层） -->
   <div class="red-envelope-container">
-    <div class="red-envelope" style="top: 25%; right: 8%; animation-delay: 1s;"></div>
+    <div class="red-envelope" style="top: 30%; right: 8%; animation-delay: 1s;"></div>
     <div class="red-envelope" style="bottom: 20%; left: 12%; animation-delay: 3s;"></div>
   </div>
 
@@ -712,14 +712,18 @@
 
   <!-- 动态花瓣效果 -->
   <script>
-    for (let i = 0; i < 20; i++) {
-      let petal = document.createElement("div");
-      petal.classList.add("petal");
-      petal.style.left = Math.random() * 100 + "vw";
-      petal.style.animationDuration = 8 + Math.random() * 10 + "s";
-      petal.style.animationDelay = Math.random() * 5 + "s";
-      petal.style.opacity = 0.5 + Math.random() * 0.5;
-      document.body.appendChild(petal);
+    // 创建20个飘落的囍字
+    for (let i = 0; i < 30; i++) {
+      let xi = document.createElement("div");
+      xi.classList.add("petal");
+      xi.textContent = "♥"; // 设置内容为囍字
+      xi.style.left = Math.random() * 100 + "vw";
+      xi.style.animationDuration = 8 + Math.random() * 10 + "s";
+      xi.style.animationDelay = Math.random() * 5 + "s";
+      xi.style.opacity = 0.5 + Math.random() * 0.5;
+      xi.style.fontSize = (10 + Math.random() * 14) + "px"; // 随机大小
+      xi.style.transform = `rotate(${Math.random() * 30 - 15}deg)`; // 初始随机旋转角度
+      document.body.appendChild(xi);
     }
   </script>
   
